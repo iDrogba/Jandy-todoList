@@ -13,6 +13,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 데이터 불러오기
+        
     }
    
 }

@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1IT-Pz-zGL"/>
-                                    <barButtonItem title="Edit" id="hda-gJ-Al3">
+                                    <barButtonItem systemItem="edit" id="hda-gJ-Al3">
                                         <connections>
                                             <segue destination="xzw-Sl-BGh" kind="presentation" identifier="homeEditSegue" id="htf-af-Rpq"/>
                                         </connections>
@@ -39,16 +39,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neb-JN-XnY">
-                                                    <rect key="frame" x="20" y="10" width="50" height="23.5"/>
+                                                    <rect key="frame" x="20" y="10" width="100" height="23.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="Ais-5D-DvH"/>
+                                                        <constraint firstAttribute="width" constant="100" id="Ais-5D-DvH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLK-WO-sNW">
-                                                    <rect key="frame" x="90" y="10" width="304" height="23.5"/>
+                                                    <rect key="frame" x="140" y="10" width="254" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -99,23 +99,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="projectName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHC-Ua-R6q">
-                                <rect key="frame" x="59" y="118" width="99" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로젝트 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHC-Ua-R6q">
+                                <rect key="frame" x="20" y="76" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="rrE-Wf-vUS"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="23P-Xi-Nm7">
-                                <rect key="frame" x="142" y="111" width="195" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="프로젝트 이름을 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="23P-Xi-Nm7">
+                                <rect key="frame" x="20" y="117" width="374" height="34"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로젝트 설명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C93-b9-cHT">
+                                <rect key="frame" x="20" y="171" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="CSk-9T-faH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="프로젝트 설명을 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="Gap-mx-z3N">
+                                <rect key="frame" x="20" y="212" width="374" height="576"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3B-B6-4JL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="새 프로젝트 생성" id="UC5-Ua-TAk">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="5vS-Mo-dM9">
+                                            <connections>
+                                                <action selector="HomeDetailAdd:" destination="xzw-Sl-BGh" id="GI5-EW-nYb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kdP-xF-cac"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gap-mx-z3N" firstAttribute="leading" secondItem="kdP-xF-cac" secondAttribute="leading" constant="20" id="6Bv-KW-mLF"/>
+                            <constraint firstItem="W3B-B6-4JL" firstAttribute="leading" secondItem="kdP-xF-cac" secondAttribute="leading" id="6Y2-Ae-6K5"/>
+                            <constraint firstItem="kdP-xF-cac" firstAttribute="trailing" secondItem="W3B-B6-4JL" secondAttribute="trailing" id="6dD-1B-bdv"/>
+                            <constraint firstItem="kdP-xF-cac" firstAttribute="trailing" secondItem="Gap-mx-z3N" secondAttribute="trailing" constant="20" id="CWb-Lk-tTx"/>
+                            <constraint firstItem="W3B-B6-4JL" firstAttribute="top" secondItem="kdP-xF-cac" secondAttribute="top" id="J7p-TM-ACb"/>
+                            <constraint firstItem="Gap-mx-z3N" firstAttribute="top" secondItem="C93-b9-cHT" secondAttribute="bottom" constant="20" id="Jb5-KJ-rVJ"/>
+                            <constraint firstItem="23P-Xi-Nm7" firstAttribute="leading" secondItem="kdP-xF-cac" secondAttribute="leading" constant="20" id="Kr9-pB-uyy"/>
+                            <constraint firstItem="23P-Xi-Nm7" firstAttribute="top" secondItem="uHC-Ua-R6q" secondAttribute="bottom" constant="20" id="Txe-Ch-c6S"/>
+                            <constraint firstItem="C93-b9-cHT" firstAttribute="leading" secondItem="kdP-xF-cac" secondAttribute="leading" constant="20" id="V2c-Xp-f2K"/>
+                            <constraint firstItem="kdP-xF-cac" firstAttribute="bottom" secondItem="Gap-mx-z3N" secondAttribute="bottom" constant="20" id="W6d-KP-Mjd"/>
+                            <constraint firstItem="C93-b9-cHT" firstAttribute="top" secondItem="23P-Xi-Nm7" secondAttribute="bottom" constant="20" id="b4N-yy-1oL"/>
+                            <constraint firstItem="uHC-Ua-R6q" firstAttribute="leading" secondItem="kdP-xF-cac" secondAttribute="leading" constant="20" id="iUU-L7-NTC"/>
+                            <constraint firstItem="uHC-Ua-R6q" firstAttribute="top" secondItem="W3B-B6-4JL" secondAttribute="bottom" constant="20" id="ija-2C-Yst"/>
+                            <constraint firstItem="kdP-xF-cac" firstAttribute="trailing" secondItem="23P-Xi-Nm7" secondAttribute="trailing" constant="20" id="wk7-XY-meY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="HomeDetailTextField" destination="23P-Xi-Nm7" id="emi-uW-2Lc"/>
+                        <outlet property="HomeDetailTextView" destination="Gap-mx-z3N" id="VWb-bn-Zu9"/>
+                        <outlet property="HomeDetailTextViewBottomConstraint" destination="W6d-KP-Mjd" id="wsp-zG-MDH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQW-aa-CC0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
