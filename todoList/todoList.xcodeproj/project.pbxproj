@@ -17,6 +17,7 @@
 		3F28C2902608C7FF00D8101E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C28F2608C7FF00D8101E /* HomeViewController.swift */; };
 		3F28C2952608CAEB00D8101E /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C2942608CAEB00D8101E /* HomeDetailViewController.swift */; };
 		3F28C29D2608D8DA00D8101E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C29C2608D8DA00D8101E /* HomeModel.swift */; };
+		3FE8F4B1260B61D3006C45C3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8F4B0260B61D3006C45C3 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		3F28C28F2608C7FF00D8101E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3F28C2942608CAEB00D8101E /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		3F28C29C2608D8DA00D8101E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		3FE8F4B0260B61D3006C45C3 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				3F28C2582608948B00D8101E /* Assets.xcassets */,
 				3F28C25A2608948B00D8101E /* LaunchScreen.storyboard */,
 				3F28C25D2608948B00D8101E /* Info.plist */,
+				3FE8F4B0260B61D3006C45C3 /* Storage.swift */,
 			);
 			path = todoList;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				3F28C2902608C7FF00D8101E /* HomeViewController.swift in Sources */,
 				3F28C29D2608D8DA00D8101E /* HomeModel.swift in Sources */,
 				3F28C2522608948A00D8101E /* SceneDelegate.swift in Sources */,
+				3FE8F4B1260B61D3006C45C3 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,25 +6,75 @@
 //
 
 
-struct HomeModel {
+struct HomeModel : Equatable, Codable{
+    var id : Int
     var projectName : String
-    var projectDescription : String
+    var projectDescription : String?
+    
+    mutating func update(projectName: String, projectDescription: String?) {
+        // TODO: update 로직 추가
+        self.projectName = projectName
+        self.projectDescription = projectDescription
+    }
+    
+    // Equatable 로 '==' 연산자 임의로 정의.
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        // Todo동등 조건 추가
+        return lhs.id == rhs.id
+    }
+    
 }
 
-
+// 여러개 존재하는 HomeModel 객체를 관리
 
 class HomeModelManager {
+    // 싱글톤~!
+    static let HomeModelShared = HomeModelManager()
+    
+    static var HomeModelLastId: Int = 0
+    
     var HomeModelArray : [HomeModel] = []
+    
+    func createHomeModel (projectName : String, projectDescription : String?) ->HomeModel {
+        let nextId = Self.HomeModelLastId + 1
+        Self.HomeModelLastId = nextId
+        return HomeModel(id: nextId, projectName: projectName, projectDescription: projectDescription)
+    }
     
     func addHomeModel (input: HomeModel) {
         HomeModelArray.append(input)
+        saveHomeModel()
     }
     
-    func numOfHomeModel ()-> Int {
+    func deleteHomeModel( HomeModel : HomeModel) {
+        if let index = HomeModelArray.firstIndex(of: HomeModel){
+        HomeModelArray.remove(at: index)
+        }
+        saveHomeModel()
+    }
+    
+    func updateTodo ( HomeModel : HomeModel) {
+        guard let index = HomeModelArray.firstIndex(of: HomeModel) else {return}
+        HomeModelArray[index].update(projectName: HomeModel.projectName, projectDescription: HomeModel.projectDescription)
+        saveHomeModel()
+    }
+    
+    func saveHomeModel(){
+        Storage.store(HomeModelArray, to: .documents, as: "HomeModel.json")
+    }
+    
+    func retrieveTodo() {
+        HomeModelArray = Storage.retrive("HomeModel.json", from: .documents, as: [HomeModel].self) ?? []
+        
+        let lastId = HomeModelArray.last?.id ?? 0
+        HomeModelManager.HomeModelLastId = lastId
+    }
+    
+    // 부가기능
+    func countHomeModel ()-> Int {
         return HomeModelArray.count
     }
     
-    func projectNameOfNum (input : Int) -> String {
-        return HomeModelArray[input].projectName
-    }
 }
+
+
