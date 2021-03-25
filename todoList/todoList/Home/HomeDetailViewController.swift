@@ -22,29 +22,57 @@ class HomeDetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        UISettings()
+        keyboardSettings()
     }
     
-    @IBAction func HomeDetailAdd(_ sender: Any) {
+    @IBAction func homeDetailAdd(_ sender: Any) {
         // 입력한거로 HomeModel 생성 및 저장
+        let projectName = HomeDetailTextField.text
+        if  projectName != "" {
+            if HomeDetailTextView.text == "프로젝트 설명을 입력하세요." {
+                HomeDetailTextView.text = nil
+            }
+            let HomeModelInstance = HomeModelManager.HomeModelShared.createHomeModel(projectName: projectName! , projectDescription: HomeDetailTextView.text)
+            HomeModelManager.HomeModelShared.addHomeModel(input: HomeModelInstance)
+            dismiss(animated: true, completion: nil)
+            }
+        else {
+        // 제목입력안했을 시 알림창
+        let dialog = UIAlertController(title: "제목", message: "내용", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
+        dialog.addAction(action)
+        self.present(dialog, animated: true, completion: nil)
+        }
     }
-
-    
 }
 
-extension HomeDetailViewController {
+
+// UI 설정
+extension HomeDetailViewController : UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        homeDetailTextViewSetPlaceholder()
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        homeDetailTextViewSetPlaceholder()
+    }
     
     // textview 테두리 설정
-    func UISettings () {
+    func keyboardSettings () {
         HomeDetailTextView.layer.borderWidth = 1.0
         HomeDetailTextView.layer.borderColor = UIColor.lightGray.cgColor
         HomeDetailTextView.layer.cornerRadius = 10
     }
     
+    // 화면 터치시 키보드 내림
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
+    
+    // 키보드 높이에 따른 인풋뷰 위치 변경
     @objc private func adjustInputView(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }
       
-        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
         
         if noti.name == UIResponder.keyboardWillShowNotification {
@@ -55,8 +83,15 @@ extension HomeDetailViewController {
         }
     }
     
+    // textview placeholder 설정
+    func homeDetailTextViewSetPlaceholder() {
+        if HomeDetailTextView.text == "" {
+            HomeDetailTextView.text = "프로젝트 설명을 입력하세요."
+            HomeDetailTextView.textColor = UIColor.lightGray
+        }else if HomeDetailTextView.text == "프로젝트 설명을 입력하세요." {
+            HomeDetailTextView.text = ""
+            HomeDetailTextView.textColor = UIColor.black
+        }
+    }
+    
 }
-
-
-// place holder 구현!!!!
-// 화면 터치시 키보드 내려가기

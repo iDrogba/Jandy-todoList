@@ -69,6 +69,7 @@
                                         <connections>
                                             <outlet property="homeTableCellLabel" destination="neb-JN-XnY" id="aZK-Zc-65Q"/>
                                             <outlet property="homeTableCellProjectDescription" destination="wLK-WO-sNW" id="Ff1-vy-nE9"/>
+                                            <outlet property="homeTableCellProjectName" destination="neb-JN-XnY" id="Vu8-Rp-7tx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -86,6 +87,9 @@
                             <constraint firstItem="Icp-uf-q3f" firstAttribute="leading" secondItem="Slw-Qr-hq8" secondAttribute="leading" id="s9C-r6-L9b"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="HomeTableView" destination="Rnd-kv-l4T" id="uiW-0h-qBE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ees-BJ-hAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,10 +112,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="프로젝트 이름을 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="23P-Xi-Nm7">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="프로젝트 이름을 입력하세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="23P-Xi-Nm7">
                                 <rect key="frame" x="20" y="117" width="374" height="34"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로젝트 설명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C93-b9-cHT">
@@ -123,20 +126,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="프로젝트 설명을 입력하세요." translatesAutoresizingMaskIntoConstraints="NO" id="Gap-mx-z3N">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="프로젝트 설명을 입력하세요." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Gap-mx-z3N">
                                 <rect key="frame" x="20" y="212" width="374" height="576"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xzw-Sl-BGh" id="iuO-CG-M0V"/>
+                                </connections>
                             </textView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3B-B6-4JL">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="새 프로젝트 생성" id="UC5-Ua-TAk">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="5vS-Mo-dM9">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="rwI-sS-TqW">
                                             <connections>
-                                                <action selector="HomeDetailAdd:" destination="xzw-Sl-BGh" id="GI5-EW-nYb"/>
+                                                <action selector="homeDetailAdd:" destination="xzw-Sl-BGh" id="gNu-Vo-XiR"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

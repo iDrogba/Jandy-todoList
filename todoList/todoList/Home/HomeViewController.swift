@@ -9,15 +9,25 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var HomeTableView: UITableView!
+    
     let homeModelManager = HomeModelManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 데이터 불러오기
-        
     }
-   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        HomeTableView.reloadData()
+    }
+    
 }
 
 // 테이블 터치될때
@@ -29,11 +39,12 @@ extension HomeViewController: UITableViewDelegate {
     
 }
 
+// 다시구현 , 데이터베이스 loadTask 로 시작할때 싱글톤 객체이 배열로 정보 가져오기 , 
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // table view cell 개수
-        return homeModelManager.countHomeModel()
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,10 +53,7 @@ extension HomeViewController: UITableViewDataSource {
         
         cell.updateUI(HomeModel: HomeModelManager.HomeModelShared.HomeModelArray[indexPath.row])
         
-        
         //deletebutton Handler, doneButton Handler
-        
-        
         
         return cell
         
