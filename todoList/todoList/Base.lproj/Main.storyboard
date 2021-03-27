@@ -67,12 +67,15 @@
                                             <constraint firstAttribute="bottom" secondItem="neb-JN-XnY" secondAttribute="bottom" constant="10" id="ysv-Qk-A1z"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="homeTableCellLabel" destination="neb-JN-XnY" id="aZK-Zc-65Q"/>
                                             <outlet property="homeTableCellProjectDescription" destination="wLK-WO-sNW" id="Ff1-vy-nE9"/>
                                             <outlet property="homeTableCellProjectName" destination="neb-JN-XnY" id="Vu8-Rp-7tx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YzQ-eL-Ee2" id="axk-dg-Pvt"/>
+                                    <outlet property="delegate" destination="YzQ-eL-Ee2" id="5g2-Ef-3Kt"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Slw-Qr-hq8"/>
@@ -114,7 +117,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="프로젝트 이름을 입력하세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="23P-Xi-Nm7">
                                 <rect key="frame" x="20" y="117" width="374" height="34"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로젝트 설명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C93-b9-cHT">

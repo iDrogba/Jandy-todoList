@@ -6,18 +6,19 @@
 //
 
 import UIKit
-
 class HomeViewController: UIViewController {
+        
     
     @IBOutlet weak var HomeTableView: UITableView!
-    
-    let homeModelManager = HomeModelManager()
-    
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        HomeModelManager.HomeModelShared.retrieveTodo()
         // 데이터 불러오기
+        print(HomeModelManager.HomeModelShared.HomeModelArray.count)
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -25,7 +26,12 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        HomeModelManager.HomeModelShared.retrieveTodo()
         HomeTableView.reloadData()
+        print(HomeModelManager.HomeModelShared.HomeModelArray.count)
+    }
+    func viewReloader() {
+        self.HomeTableView.beginUpdates()
     }
     
 }
@@ -39,12 +45,12 @@ extension HomeViewController: UITableViewDelegate {
     
 }
 
-// 다시구현 , 데이터베이스 loadTask 로 시작할때 싱글톤 객체이 배열로 정보 가져오기 , 
+// 다시구현
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // table view cell 개수
-        return 3
+        return HomeModelManager.HomeModelShared.HomeModelArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

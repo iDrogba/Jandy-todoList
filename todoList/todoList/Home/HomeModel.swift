@@ -64,7 +64,7 @@ class HomeModelManager {
     }
     
     func retrieveTodo() {
-        HomeModelArray = Storage.retrive("HomeModel.json", from: .documents, as: [HomeModel].self) ?? []
+        HomeModelManager.HomeModelShared.HomeModelArray = Storage.retrive("HomeModel.json", from: .documents, as: [HomeModel].self) ?? []
         
         let lastId = HomeModelArray.last?.id ?? 0
         HomeModelManager.HomeModelLastId = lastId

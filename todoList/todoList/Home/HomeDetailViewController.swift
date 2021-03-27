@@ -8,7 +8,9 @@
 import UIKit
 
 class HomeDetailViewController: UIViewController {
-
+    
+    let VC = HomeViewController()
+    
     @IBOutlet weak var HomeDetailTextField: UITextField!
     
     @IBOutlet weak var HomeDetailTextView: UITextView!
@@ -34,6 +36,8 @@ class HomeDetailViewController: UIViewController {
             }
             let HomeModelInstance = HomeModelManager.HomeModelShared.createHomeModel(projectName: projectName! , projectDescription: HomeDetailTextView.text)
             HomeModelManager.HomeModelShared.addHomeModel(input: HomeModelInstance)
+            HomeModelManager.HomeModelShared.retrieveTodo()
+            VC.viewReloader()
             dismiss(animated: true, completion: nil)
             }
         else {
