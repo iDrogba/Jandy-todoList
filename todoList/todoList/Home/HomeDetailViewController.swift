@@ -9,8 +9,6 @@ import UIKit
 
 class HomeDetailViewController: UIViewController {
     
-    let VC = HomeViewController()
-    
     @IBOutlet weak var HomeDetailTextField: UITextField!
     
     @IBOutlet weak var HomeDetailTextView: UITextView!
@@ -37,12 +35,16 @@ class HomeDetailViewController: UIViewController {
             let HomeModelInstance = HomeModelManager.HomeModelShared.createHomeModel(projectName: projectName! , projectDescription: HomeDetailTextView.text)
             HomeModelManager.HomeModelShared.addHomeModel(input: HomeModelInstance)
             HomeModelManager.HomeModelShared.retrieveTodo()
-            VC.viewReloader()
+            // HomeViewController의 viewWillAppear 실행
+            NotificationCenter.default.post(
+                name: .didCompleteAdd,
+                object: nil
+            )
             dismiss(animated: true, completion: nil)
             }
         else {
         // 제목입력안했을 시 알림창
-        let dialog = UIAlertController(title: "제목", message: "내용", preferredStyle: .alert)
+        let dialog = UIAlertController(title: "경고", message: "제목을 입력하세요.", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
         dialog.addAction(action)
         self.present(dialog, animated: true, completion: nil)

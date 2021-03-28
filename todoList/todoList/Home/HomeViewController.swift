@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import NotificationCenter
+
 class HomeViewController: UIViewController {
-        
-    
+            
     @IBOutlet weak var HomeTableView: UITableView!
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,14 @@ class HomeViewController: UIViewController {
         // 데이터 불러오기
         print(HomeModelManager.HomeModelShared.HomeModelArray.count)
 
+        // notificationcenter -> modal 끝날때 호출
+        NotificationCenter.default.addObserver(
+            self, // observer가 될 object
+            selector: #selector(viewWillAppear(_:)), // noti가 오면 실행할 함수
+            name: .didCompleteAdd, // Noti의 이름
+            object: nil // noti받을 대상. 지정하면 특정 sender에게만 notif를 받음 (optional)
+        )
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -26,14 +34,12 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        HomeModelManager.HomeModelShared.retrieveTodo()
         HomeTableView.reloadData()
-        print(HomeModelManager.HomeModelShared.HomeModelArray.count)
     }
-    func viewReloader() {
-        self.HomeTableView.beginUpdates()
-    }
-    
+}
+
+extension Notification.Name {
+    static let didCompleteAdd = Notification.Name("didCompleteAdd")
 }
 
 // 테이블 터치될때
