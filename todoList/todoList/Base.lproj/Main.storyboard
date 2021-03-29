@@ -19,8 +19,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-uf-q3f">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
+                                    <barButtonItem title="Edit" id="tEW-o8-QWp">
+                                        <connections>
+                                            <action selector="editMode:" destination="YzQ-eL-Ee2" id="KBX-wA-8xb"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1IT-Pz-zGL"/>
-                                    <barButtonItem systemItem="edit" id="hda-gJ-Al3">
+                                    <barButtonItem systemItem="add" id="hda-gJ-Al3">
                                         <connections>
                                             <segue destination="xzw-Sl-BGh" kind="presentation" identifier="homeEditSegue" id="htf-af-Rpq"/>
                                         </connections>
@@ -48,7 +53,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLK-WO-sNW">
-                                                    <rect key="frame" x="140" y="10" width="254" height="23.5"/>
+                                                    <rect key="frame" x="140" y="10" width="264" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -56,14 +61,14 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="wLK-WO-sNW" firstAttribute="leading" secondItem="neb-JN-XnY" secondAttribute="trailing" constant="20" id="ITS-0U-JOj"/>
+                                                <constraint firstAttribute="trailing" secondItem="wLK-WO-sNW" secondAttribute="trailing" constant="10" id="abK-39-dzm"/>
+                                                <constraint firstItem="neb-JN-XnY" firstAttribute="leading" secondItem="3n6-7g-oC8" secondAttribute="leading" constant="20" id="w00-bF-UCo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="wLK-WO-sNW" secondAttribute="bottom" constant="10" id="9by-wZ-gr4"/>
-                                            <constraint firstItem="neb-JN-XnY" firstAttribute="leading" secondItem="UHk-17-Wbi" secondAttribute="leading" constant="20" id="JKS-ZN-rl3"/>
                                             <constraint firstItem="neb-JN-XnY" firstAttribute="top" secondItem="UHk-17-Wbi" secondAttribute="top" constant="10" id="Ktp-V6-9KF"/>
                                             <constraint firstItem="wLK-WO-sNW" firstAttribute="top" secondItem="UHk-17-Wbi" secondAttribute="top" constant="10" id="OrW-b2-qbc"/>
-                                            <constraint firstAttribute="trailing" secondItem="wLK-WO-sNW" secondAttribute="trailing" constant="20" id="a1B-3o-rS9"/>
                                             <constraint firstAttribute="bottom" secondItem="neb-JN-XnY" secondAttribute="bottom" constant="10" id="ysv-Qk-A1z"/>
                                         </constraints>
                                         <connections>
@@ -91,6 +96,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="HomeEditBtn" destination="tEW-o8-QWp" id="IeH-yW-XNN"/>
                         <outlet property="HomeTableView" destination="Rnd-kv-l4T" id="TaQ-QL-htF"/>
                     </connections>
                 </viewController>

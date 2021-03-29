@@ -46,6 +46,11 @@ class HomeModelManager {
         saveHomeModel()
     }
     
+    func addHomeModelAt (at:Int, input: HomeModel) {
+        HomeModelArray.insert(input, at: at)
+        saveHomeModel()
+    }
+    
     func deleteHomeModel( HomeModel : HomeModel) {
         if let index = HomeModelArray.firstIndex(of: HomeModel){
         HomeModelArray.remove(at: index)
@@ -56,6 +61,11 @@ class HomeModelManager {
     func updateTodo ( HomeModel : HomeModel) {
         guard let index = HomeModelArray.firstIndex(of: HomeModel) else {return}
         HomeModelArray[index].update(projectName: HomeModel.projectName, projectDescription: HomeModel.projectDescription)
+        saveHomeModel()
+    }
+    
+    func swapTodo (from :Int,to : Int) {
+        HomeModelArray.swapAt(from, to)
         saveHomeModel()
     }
     

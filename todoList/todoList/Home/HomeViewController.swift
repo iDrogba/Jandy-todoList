@@ -11,14 +11,14 @@ import NotificationCenter
 class HomeViewController: UIViewController {
             
     @IBOutlet weak var HomeTableView: UITableView!
+    @IBOutlet weak var HomeEditBtn: UIBarButtonItem!
     
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
         HomeModelManager.HomeModelShared.retrieveTodo()
-        // 데이터 불러오기
-        print(HomeModelManager.HomeModelShared.HomeModelArray.count)
-
+        
         // notificationcenter -> modal 끝날때 호출
         NotificationCenter.default.addObserver(
             self, // observer가 될 object
@@ -36,6 +36,8 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         HomeTableView.reloadData()
     }
+    
+   
 }
 
 extension Notification.Name {
@@ -51,7 +53,7 @@ extension HomeViewController: UITableViewDelegate {
     
 }
 
-// 다시구현
+
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,11 +67,55 @@ extension HomeViewController: UITableViewDataSource {
         
         cell.updateUI(HomeModel: HomeModelManager.HomeModelShared.HomeModelArray[indexPath.row])
         
-        //deletebutton Handler, doneButton Handler
         
         return cell
         
     }
+    @IBAction func editMode(_ sender: Any) {
+        if  self.HomeTableView.isEditing {
+            self.HomeEditBtn.title = "수정"
+            self.HomeTableView.setEditing(false, animated: true)
+            }
+        else {
+            self.HomeEditBtn.title = "완료"
+            self.HomeTableView.setEditing(true, animated: true)
+            }
+    }
+}
+
+extension HomeViewController {
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            HomeModelManager.HomeModelShared.deleteHomeModel(HomeModel: HomeModelManager.HomeModelShared.HomeModelArray[indexPath.row])
+            HomeTableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+
+        }
+    }
+    
+    // edit mode가아니라면 스와이프 삭제 못하게함
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if HomeTableView.isEditing {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    // 스와이프로 삭제시 "삭제" 메뉴 넣는 메서드
+//    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+//        return "삭제"
+//    }
+ 
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        let HM = HomeModelManager.HomeModelShared.HomeModelArray[fromIndexPath.row]
+        HomeModelManager.HomeModelShared.deleteHomeModel(HomeModel: HomeModelManager.HomeModelShared.HomeModelArray[fromIndexPath.row])
+        HomeModelManager.HomeModelShared.addHomeModelAt(at: to.row, input: HM)
+        HomeTableView.reloadData()
+    }
+    
 }
 
 class HomeTableCell : UITableViewCell {
@@ -77,9 +123,10 @@ class HomeTableCell : UITableViewCell {
     @IBOutlet weak var homeTableCellProjectName: UILabel!
     @IBOutlet weak var homeTableCellProjectDescription: UILabel!
     
+
     func updateUI(HomeModel : HomeModel) {
         homeTableCellProjectName.text = HomeModel.projectName
         homeTableCellProjectDescription.text = HomeModel.projectDescription
     }
-    
+
 }
