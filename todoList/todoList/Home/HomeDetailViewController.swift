@@ -22,7 +22,7 @@ class HomeDetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        keyboardSettings()
+        UISettings()
     }
     
     @IBAction func homeDetailAdd(_ sender: Any) {
@@ -64,7 +64,7 @@ extension HomeDetailViewController : UITextViewDelegate {
     }
     
     // textview 테두리 설정
-    func keyboardSettings () {
+    func UISettings () {
         HomeDetailTextView.layer.borderWidth = 1.0
         HomeDetailTextView.layer.borderColor = UIColor.lightGray.cgColor
         HomeDetailTextView.layer.cornerRadius = 10

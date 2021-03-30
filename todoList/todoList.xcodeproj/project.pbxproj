@@ -17,6 +17,7 @@
 		3F28C2902608C7FF00D8101E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C28F2608C7FF00D8101E /* HomeViewController.swift */; };
 		3F28C2952608CAEB00D8101E /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C2942608CAEB00D8101E /* HomeDetailViewController.swift */; };
 		3F28C29D2608D8DA00D8101E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C29C2608D8DA00D8101E /* HomeModel.swift */; };
+		3F62716426134BA100A73B61 /* WorkspaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62716326134BA100A73B61 /* WorkspaceViewController.swift */; };
 		3FE8F4B1260B61D3006C45C3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8F4B0260B61D3006C45C3 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		3F28C28F2608C7FF00D8101E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3F28C2942608CAEB00D8101E /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		3F28C29C2608D8DA00D8101E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		3F62716326134BA100A73B61 /* WorkspaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceViewController.swift; sourceTree = "<group>"; };
 		3FE8F4B0260B61D3006C45C3 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +109,7 @@
 			children = (
 				3F28C2852608C65500D8101E /* memoCreate */,
 				3F28C2842608C63900D8101E /* fileCreate */,
-				3F28C2832608C61700D8101E /* edit */,
+				3F28C2832608C61700D8101E /* Workspace */,
 				3F28C2822608C60C00D8101E /* Home */,
 				3F28C24F2608948A00D8101E /* AppDelegate.swift */,
 				3F28C2512608948A00D8101E /* SceneDelegate.swift */,
@@ -148,11 +150,12 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		3F28C2832608C61700D8101E /* edit */ = {
+		3F28C2832608C61700D8101E /* Workspace */ = {
 			isa = PBXGroup;
 			children = (
+				3F62716326134BA100A73B61 /* WorkspaceViewController.swift */,
 			);
-			path = edit;
+			path = Workspace;
 			sourceTree = "<group>";
 		};
 		3F28C2842608C63900D8101E /* fileCreate */ = {
@@ -301,6 +304,7 @@
 			files = (
 				3F28C2952608CAEB00D8101E /* HomeDetailViewController.swift in Sources */,
 				3F28C2502608948A00D8101E /* AppDelegate.swift in Sources */,
+				3F62716426134BA100A73B61 /* WorkspaceViewController.swift in Sources */,
 				3F28C2902608C7FF00D8101E /* HomeViewController.swift in Sources */,
 				3F28C29D2608D8DA00D8101E /* HomeModel.swift in Sources */,
 				3F28C2522608948A00D8101E /* SceneDelegate.swift in Sources */,

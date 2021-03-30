@@ -73,7 +73,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     @IBAction func editMode(_ sender: Any) {
         if  self.HomeTableView.isEditing {
-            self.HomeEditBtn.title = "수정"
+            self.HomeEditBtn.title = "편집"
             self.HomeTableView.setEditing(false, animated: true)
             }
         else {
@@ -104,10 +104,10 @@ extension HomeViewController {
         }
     }
     
-    // 스와이프로 삭제시 "삭제" 메뉴 넣는 메서드
-//    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-//        return "삭제"
-//    }
+     // 삭제시 "삭제" 글자 넣는 메서드
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
+    }
  
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let HM = HomeModelManager.HomeModelShared.HomeModelArray[fromIndexPath.row]
