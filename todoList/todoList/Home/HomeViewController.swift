@@ -49,6 +49,9 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let HM = HomeModelManager.HomeModelShared.HomeModelArray[indexPath.row]
+        
+        WorkspaceViewController.HM = HM
     }
     
 }
