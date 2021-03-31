@@ -8,8 +8,13 @@
 import UIKit
 
 class WorkspaceViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var WorkspaceCollectionView: UICollectionView!
+    @IBOutlet weak var WorkspaceProjectName: UINavigationItem!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -39,5 +44,26 @@ extension WorkspaceViewController : UICollectionViewDelegateFlowLayout{
         let height: CGFloat = 50
         return CGSize(width: width, height: height)
     }
+    
+}
+
+class collectionViewCell :UICollectionViewCell {
+    
+    @IBOutlet weak var CellCheckBtn: UIButton!
+    @IBOutlet weak var CellContent: UILabel!
+    @IBOutlet weak var CellDeleteBtn: UIButton!
+    
+}
+
+class collectionViewHeader : UICollectionReusableView {
+
+    @IBOutlet weak var HeaderTitle: UILabel!
+    
+}
+
+class collectionViewFooter : UICollectionReusableView {
+    
+    @IBOutlet weak var FooterTextField: UITextField!
+    @IBOutlet weak var FooterAddBtn: UIButton!
     
 }

@@ -10,6 +10,7 @@ struct HomeModel : Equatable, Codable{
     var id : Int
     var projectName : String
     var projectDescription : String?
+    var workspaceBoard : [WorkspaceBoardModel] = []
     
     mutating func update(projectName: String, projectDescription: String?) {
         // TODO: update 로직 추가
@@ -35,7 +36,7 @@ class HomeModelManager {
     
     var HomeModelArray : [HomeModel] = []
     
-    func createHomeModel (projectName : String, projectDescription : String?) ->HomeModel {
+    func createHomeModel (projectName : String, projectDescription : String?) -> HomeModel {
         let nextId = Self.HomeModelLastId + 1
         Self.HomeModelLastId = nextId
         return HomeModel(id: nextId, projectName: projectName, projectDescription: projectDescription)
@@ -79,6 +80,13 @@ class HomeModelManager {
         let lastId = HomeModelArray.last?.id ?? 0
         HomeModelManager.HomeModelLastId = lastId
     }
+//
+//    func addWorkspaceBoardModel(input: WorkspaceBoardModel, identifier : HomeModel) {
+//        if let index = HomeModelArray.firstIndex(of: identifier) {
+//            HomeModelArray[index].workspaceBoard.append(input)
+//        }
+//        saveHomeModel()
+//    }
     
     // 부가기능
     func countHomeModel ()-> Int {
