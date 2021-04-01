@@ -126,6 +126,7 @@ class HomeTableCell : UITableViewCell {
     @IBOutlet weak var homeTableCellProjectName: UILabel!
     @IBOutlet weak var homeTableCellProjectDescription: UILabel!
     
+    
 
     func updateUI(HomeModel : HomeModel) {
         homeTableCellProjectName.text = HomeModel.projectName

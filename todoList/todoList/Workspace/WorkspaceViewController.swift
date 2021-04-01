@@ -22,8 +22,12 @@ class WorkspaceViewController: UIViewController {
         
         super.viewDidLoad()
         
+        
+        // 불러오기 해야함!
+        
         workspaceBoardModelShared.addWorkspaceBoard(input: workspaceBoardModelShared.createWorkspaceBoard(boardName: "ㅎㅇ"), identifier: WorkspaceViewController.HM)
         workspaceTodoModelShared.addWorkspaceTodo(input: workspaceTodoModelShared.createWorkspaceTodo(input: "tlqkf"), identifier1: workspaceBoardModelShared.workspaceBoardModelArray[0], identifier2: WorkspaceViewController.HM)
+        
         workspaceBoardModelShared.retrieveWorkspaceBoard(identifier: WorkspaceViewController.HM)
         
         
@@ -43,9 +47,20 @@ extension WorkspaceViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? collectionViewCell else {return UICollectionViewCell()}
         
-        if ( workspaceBoardModelShared.workspaceBoardModelArray.count > indexPath.section && workspaceTodoModelShared.workspaceTodoModelArray.count > collectionView.numberOfSections ) {
-        cell.update(input: workspaceBoardModelShared.workspaceBoardModelArray[indexPath.item], section: collectionView.numberOfSections)
+        cell.doneButtonTapHandler = { isDone in
+            todo.isDone = isDone
+            self.todoListViewModel.updateTodo(todo)
+            self.collectionView.reloadData()
         }
+        
+        cell.deleteButtonTapHandler = {
+            self.todoListViewModel.deleteTodo(todo)
+            self.collectionView.reloadData()
+        }
+        
+       
+        cell.update(input: workspaceBoardModelShared.workspaceBoardModelArray[indexPath.section], section: indexPath.item)
+        
         
         return cell
     }
@@ -91,9 +106,23 @@ class collectionViewCell :UICollectionViewCell {
     @IBOutlet weak var CellContent: UILabel!
     @IBOutlet weak var CellDeleteBtn: UIButton!
     
+    @IBOutlet weak var viewConstraintHeight: NSLayoutConstraint!
+    
     func update(input : WorkspaceBoardModel, section : Int){
         CellContent.text = input.workspaceTodo[section].todo
     }
+    
+    private func showStrikeThrough(_ show: Bool) {
+        if show {
+            viewConstraintHeight.constant = 1
+        } else {
+            viewConstraintHeight.constant = 0
+        }
+    }
+    
+    
+    
+    
     
 }
 
@@ -108,7 +137,6 @@ class collectionViewHeader : UICollectionReusableView {
 
 class collectionViewFooter : UICollectionReusableView {
     
-    @IBOutlet weak var FooterTextField: UITextField!
     @IBOutlet weak var FooterAddBtn: UIButton!
     
 }
