@@ -146,6 +146,9 @@
                                                     </constraints>
                                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button" image="circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="checkButtonTapped:" destination="y5u-14-zPF" eventType="touchUpInside" id="rSh-tN-ghV"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kqT-XX-5DR">
                                                     <rect key="frame" x="20" y="10" width="374" height="66"/>
@@ -160,6 +163,9 @@
                                                     <state key="normal" image="delete.left.fill" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteButtonTapped:" destination="y5u-14-zPF" eventType="touchUpInside" id="IRk-7O-OMC"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OYa-Rx-B20">
                                                     <rect key="frame" x="82" y="42.5" width="252" height="1"/>
@@ -230,6 +236,9 @@
                                             <state key="normal" title="+  새 작업 추가">
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="addTodo:" destination="ljl-TB-ODZ" eventType="touchUpInside" id="TRG-dp-RnT"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

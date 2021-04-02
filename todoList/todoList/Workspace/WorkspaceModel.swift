@@ -28,9 +28,11 @@ struct WorkspaceBoardModel : Equatable, Codable {
 struct WorkspaceTodoModel : Equatable, Codable {
     var id : Int
     var todo : String
+    var isDone : Bool
     
-    mutating func update(todo: String) {
+    mutating func update(todo: String, isDone :  Bool) {
         self.todo = todo
+        self.isDone = isDone
     }
     
     // Equatable 로 '==' 연산자 임의로 정의.
@@ -105,10 +107,19 @@ class WorkspaceTodoModelManager {
         workspaceBoardModelShared.saveWorkspaceBoard(identifier: identifier2)
     }
     
+    func toggleWorkspaceTodoisDone(index1 : Int, index2 : Int, homeModel : HomeModel){
+                workspaceBoardModelShared.workspaceBoardModelArray[index1].workspaceTodo[index2].isDone = !workspaceBoardModelShared.workspaceBoardModelArray[index1].workspaceTodo[index2].isDone
+        workspaceBoardModelShared.saveWorkspaceBoard(identifier: homeModel)
+    }
+    func deleteWorkspaceTodo(index1 : Int, index2 : Int, homeModel : HomeModel){
+        workspaceBoardModelShared.workspaceBoardModelArray[index1].workspaceTodo.remove(at: index2)
+        workspaceBoardModelShared.saveWorkspaceBoard(identifier: homeModel)
+    }
+    
     func createWorkspaceTodo (input: String) -> WorkspaceTodoModel{
         let nextId = Self.workspaceTodoModelLastId + 1
         Self.workspaceTodoModelLastId = nextId
-        return WorkspaceTodoModel(id: nextId, todo: input)
+        return WorkspaceTodoModel(id: nextId, todo: input, isDone: false )
     }
     
     func retrieveWorkspaceTodo(identifier : WorkspaceBoardModel) {
