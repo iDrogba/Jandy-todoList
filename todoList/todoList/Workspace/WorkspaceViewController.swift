@@ -25,9 +25,9 @@ class WorkspaceViewController: UIViewController {
         
         // 불러오기 해야함!
         
-        workspaceBoardModelShared.addWorkspaceBoard(input: workspaceBoardModelShared.createWorkspaceBoard(boardName: "ㅎㅇ"), identifier: WorkspaceViewController.HM)
-        workspaceTodoModelShared.addWorkspaceTodo(input: workspaceTodoModelShared.createWorkspaceTodo(input: "tlqkf"), identifier1: workspaceBoardModelShared.workspaceBoardModelArray[0], identifier2: WorkspaceViewController.HM)
-        
+//        workspaceBoardModelShared.addWorkspaceBoard(input: workspaceBoardModelShared.createWorkspaceBoard(boardName: "ㅎㅇ"), identifier: WorkspaceViewController.HM)
+//        workspaceTodoModelShared.addWorkspaceTodo(input: workspaceTodoModelShared.createWorkspaceTodo(input: "tlqkf"), identifier1: workspaceBoardModelShared.workspaceBoardModelArray[0], identifier2: WorkspaceViewController.HM)
+//
         workspaceBoardModelShared.retrieveWorkspaceBoard(identifier: WorkspaceViewController.HM)
         
         
@@ -49,7 +49,8 @@ extension WorkspaceViewController : UICollectionViewDataSource {
         
    
         cell.doneButtonTapHandler = {
-            self.workspaceTodoModelShared.toggleWorkspaceTodoisDone(index1: indexPath.section, index2: indexPath.item, homeModel: WorkspaceViewController.HM)
+            self.workspaceTodoModelShared.toggleWorkspaceTodoisDone(index1: indexPath.section, index2: indexPath.item, homeModel: WorkspaceViewController.HM )
+            
             self.WorkspaceCollectionView.reloadData()
         }
         
@@ -112,11 +113,19 @@ extension WorkspaceViewController : UICollectionViewDataSource {
 
 extension WorkspaceViewController : UICollectionViewDelegateFlowLayout{
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // [x] TODO: 사이즈 계산하기
-        let width: CGFloat = collectionView.bounds.width
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width: CGFloat = WorkspaceCollectionView.bounds.width
         let height: CGFloat = 50
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width: CGFloat = WorkspaceCollectionView.frame.width
+        let height: CGFloat = 50
+        let itemSize = CGSize(width: width, height: height)
+        
+        return itemSize
     }
     
 }

@@ -108,7 +108,7 @@ class WorkspaceTodoModelManager {
     }
     
     func toggleWorkspaceTodoisDone(index1 : Int, index2 : Int, homeModel : HomeModel){
-                workspaceBoardModelShared.workspaceBoardModelArray[index1].workspaceTodo[index2].isDone = !workspaceBoardModelShared.workspaceBoardModelArray[index1].workspaceTodo[index2].isDone
+        workspaceBoardModelShared.workspaceBoardModelArray[index1].workspaceTodo[index2].isDone = !workspaceBoardModelShared.workspaceBoardModelArray[index1].workspaceTodo[index2].isDone
         workspaceBoardModelShared.saveWorkspaceBoard(identifier: homeModel)
     }
     func deleteWorkspaceTodo(index1 : Int, index2 : Int, homeModel : HomeModel){
