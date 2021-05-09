@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YzQ-eL-Ee2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YzQ-eL-Ee2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -38,10 +38,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="HomeTableCell" id="UHk-17-Wbi" customClass="HomeTableCell" customModule="todoList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UHk-17-Wbi" id="3n6-7g-oC8">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neb-JN-XnY">
@@ -54,7 +54,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLK-WO-sNW">
-                                                    <rect key="frame" x="135" y="10" width="238" height="23.5"/>
+                                                    <rect key="frame" x="135" y="10" width="239.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="486.95652173913049" y="-44.196428571428569"/>
         </scene>
-        <!--프로젝트명-->
+        <!--workspace-->
         <scene sceneID="QFA-Jf-LMj">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="MRk-HM-0mY" customClass="WorkspaceViewController" customModule="todoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -264,7 +264,13 @@
                             <constraint firstItem="uNV-h1-4zC" firstAttribute="top" secondItem="XxH-fT-uJD" secondAttribute="top" id="fYo-eT-mg3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="프로젝트명" id="B0i-R7-ZoQ"/>
+                    <navigationItem key="navigationItem" title="workspace" id="B0i-R7-ZoQ">
+                        <barButtonItem key="leftBarButtonItem" title="열 추가" id="WFw-ib-xp6">
+                            <connections>
+                                <action selector="addColumn:" destination="MRk-HM-0mY" id="tlE-Ms-ZYD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="WorkspaceCollectionView" destination="uNV-h1-4zC" id="jCz-RR-fCw"/>
@@ -273,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okf-bX-tER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255.072463768116" y="738.61607142857144"/>
+            <point key="canvasLocation" x="1965" y="-44"/>
         </scene>
         <!--Home Detail View Controller-->
         <scene sceneID="BbE-Gd-5Wb">
@@ -357,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQW-aa-CC0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1273.913043478261" y="-44.196428571428569"/>
+            <point key="canvasLocation" x="1233" y="-44"/>
         </scene>
     </scenes>
     <resources>

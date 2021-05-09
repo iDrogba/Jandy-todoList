@@ -8,7 +8,7 @@
 import UIKit
 
 class WorkspaceViewController: UIViewController {
-    
+        
     static var HM : HomeModel = HomeModelManager.HomeModelShared.HomeModelArray[0]
     
     @IBOutlet weak var WorkspaceCollectionView: UICollectionView!
@@ -25,9 +25,9 @@ class WorkspaceViewController: UIViewController {
         
         // 불러오기 해야함!
         
-//        workspaceBoardModelShared.addWorkspaceBoard(input: workspaceBoardModelShared.createWorkspaceBoard(boardName: "ㅎㅇ"), identifier: WorkspaceViewController.HM)
-//        workspaceTodoModelShared.addWorkspaceTodo(input: workspaceTodoModelShared.createWorkspaceTodo(input: "tlqkf"), identifier1: workspaceBoardModelShared.workspaceBoardModelArray[0], identifier2: WorkspaceViewController.HM)
-//
+        workspaceBoardModelShared.addWorkspaceBoard(input: workspaceBoardModelShared.createWorkspaceBoard(boardName: "1차 product backlog"), identifier: WorkspaceViewController.HM)
+        workspaceTodoModelShared.addWorkspaceTodo(input: workspaceTodoModelShared.createWorkspaceTodo(input: "관리자 메뉴 화면 구현."), identifier1: workspaceBoardModelShared.workspaceBoardModelArray[0], identifier2: WorkspaceViewController.HM)
+
         workspaceBoardModelShared.retrieveWorkspaceBoard(identifier: WorkspaceViewController.HM)
         
         
@@ -35,8 +35,8 @@ class WorkspaceViewController: UIViewController {
     }
     
 
-
 }
+
 
 extension WorkspaceViewController : UICollectionViewDataSource {
     
@@ -108,7 +108,9 @@ extension WorkspaceViewController : UICollectionViewDataSource {
         }
     }
 
-    
+    @IBAction func addColumn(_ sender: Any) {
+        
+    }
 }
 
 extension WorkspaceViewController : UICollectionViewDelegateFlowLayout{
