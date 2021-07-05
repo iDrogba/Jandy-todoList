@@ -10,7 +10,7 @@ struct HomeModel : Equatable, Codable{
     var id : Int
     var projectName : String
     var projectDescription : String?
-    var workspaceBoard : [WorkspaceBoardModel] = []
+    var content : String?
     
     mutating func update(projectName: String, projectDescription: String?) {
         // TODO: update 로직 추가
@@ -59,16 +59,23 @@ class HomeModelManager {
         saveHomeModel()
     }
     
-    func updateTodo ( HomeModel : HomeModel) {
-        guard let index = HomeModelArray.firstIndex(of: HomeModel) else {return}
-        HomeModelArray[index].update(projectName: HomeModel.projectName, projectDescription: HomeModel.projectDescription)
+    func updateHomeModelContent(ID : Int, content : String?) {
+        if let index = HomeModelArray.firstIndex(where: {$0.id == ID}){
+            HomeModelArray[index].content = content
+        }
         saveHomeModel()
     }
     
-    func swapTodo (from :Int,to : Int) {
-        HomeModelArray.swapAt(from, to)
-        saveHomeModel()
-    }
+//    func updateTodo ( HomeModel : HomeModel) {
+//        guard let index = HomeModelArray.firstIndex(of: HomeModel) else {return}
+//        HomeModelArray[index].update(projectName: HomeModel.projectName, projectDescription: HomeModel.projectDescription)
+//        saveHomeModel()
+//    }
+//
+//    func swapTodo (from :Int,to : Int) {
+//        HomeModelArray.swapAt(from, to)
+//        saveHomeModel()
+//    }
     
     func saveHomeModel(){
         Storage.store(HomeModelArray, to: .documents, as: "HomeModel.json")
@@ -76,11 +83,18 @@ class HomeModelManager {
     
     func retrieveTodo() {
         HomeModelManager.HomeModelShared.HomeModelArray = Storage.retrive("HomeModel.json", from: .documents, as: [HomeModel].self) ?? []
-        
+
         let lastId = HomeModelArray.last?.id ?? 0
         HomeModelManager.HomeModelLastId = lastId
     }
-//
+
+    func searchHomeModel(ID: Int)-> HomeModel? {
+        if let firstIndex = HomeModelArray.firstIndex(where: {$0.id == ID}){
+            return HomeModelArray[firstIndex]
+        }
+        return nil
+    }
+
 //    func addWorkspaceBoardModel(input: WorkspaceBoardModel, identifier : HomeModel) {
 //        if let index = HomeModelArray.firstIndex(of: identifier) {
 //            HomeModelArray[index].workspaceBoard.append(input)

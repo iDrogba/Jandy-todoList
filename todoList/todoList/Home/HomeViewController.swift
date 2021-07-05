@@ -49,9 +49,10 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let HM = HomeModelManager.HomeModelShared.HomeModelArray[indexPath.row]
-        
-        WorkspaceViewController.HM = HM
+        let sb = UIStoryboard(name: "Memo", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "MemoViewController") as! MemoViewController
+        vc.currentMemoID = HomeModelManager.HomeModelShared.HomeModelArray[indexPath.row].id
+        self.present(vc, animated: false, completion: nil)
     }
     
 }
