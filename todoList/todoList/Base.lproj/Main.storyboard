@@ -8,6 +8,42 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="0Fk-w0-Zi1">
+            <objects>
+                <navigationController id="cim-eB-IhP" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hRP-DW-rrQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vTu-TR-fFH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="r05-Wn-BCR" kind="relationship" relationship="rootViewController" id="g9s-ih-qII"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2AE-tL-g3H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="-660"/>
+        </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="0Lo-zx-76x">
+            <objects>
+                <viewController id="r05-Wn-BCR" customClass="SideMenuViewController" customModule="todoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1fM-qu-kco">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ESo-xc-Jpk"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ons-ZX-7cm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GqD-hX-WxP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983" y="-660"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="KyD-Kb-IEh">
             <objects>
@@ -87,6 +123,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Slw-Qr-hq8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Rnd-kv-l4T" firstAttribute="top" secondItem="Icp-uf-q3f" secondAttribute="bottom" id="2et-pX-I8h"/>
                             <constraint firstItem="Icp-uf-q3f" firstAttribute="top" secondItem="Slw-Qr-hq8" secondAttribute="top" id="4PD-Pf-x8V"/>
@@ -96,6 +133,9 @@
                             <constraint firstItem="Slw-Qr-hq8" firstAttribute="trailing" secondItem="Icp-uf-q3f" secondAttribute="trailing" id="ix0-Kd-iQc"/>
                             <constraint firstItem="Icp-uf-q3f" firstAttribute="leading" secondItem="Slw-Qr-hq8" secondAttribute="leading" id="s9C-r6-L9b"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="udz-Sl-bYg" appends="YES" id="bB8-oc-88t"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="f1O-Tx-bhE"/>
                     <connections>
@@ -104,6 +144,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ees-BJ-hAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="udz-Sl-bYg">
+                    <connections>
+                        <action selector="swipeGestureRecognize:" destination="YzQ-eL-Ee2" id="Gmy-8w-X9A"/>
+                        <segue destination="cim-eB-IhP" kind="show" id="6hq-5M-XFz"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="164" y="78"/>
         </scene>
@@ -190,12 +236,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQW-aa-CC0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="-44"/>
+            <point key="canvasLocation" x="984" y="78"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

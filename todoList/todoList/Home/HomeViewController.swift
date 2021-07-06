@@ -37,7 +37,10 @@ class HomeViewController: UIViewController {
         HomeTableView.reloadData()
     }
     
-   
+    @IBAction func swipeGestureRecognize(_ sender: Any) {
+        
+    }
+    
 }
 
 extension Notification.Name {
