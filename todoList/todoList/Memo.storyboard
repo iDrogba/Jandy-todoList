@@ -16,11 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="메모를 입력하세요." textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rpr-K3-1lI">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="0Gr-xO-ycn">
                                 <rect key="frame" x="10" y="98" width="394" height="754"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textField>
+                            </textView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRZ-7v-xDG">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
@@ -36,17 +38,18 @@
                         <viewLayoutGuide key="safeArea" id="bT4-JT-OWL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bT4-JT-OWL" firstAttribute="bottom" secondItem="Rpr-K3-1lI" secondAttribute="bottom" constant="10" id="24W-tU-hv7"/>
+                            <constraint firstItem="bT4-JT-OWL" firstAttribute="trailing" secondItem="0Gr-xO-ycn" secondAttribute="trailing" constant="10" id="5uc-2j-zNu"/>
                             <constraint firstItem="HRZ-7v-xDG" firstAttribute="top" secondItem="bT4-JT-OWL" secondAttribute="top" id="7Zj-6N-R9G"/>
-                            <constraint firstItem="Rpr-K3-1lI" firstAttribute="leading" secondItem="bT4-JT-OWL" secondAttribute="leading" constant="10" id="MWp-uO-Alk"/>
+                            <constraint firstItem="0Gr-xO-ycn" firstAttribute="top" secondItem="HRZ-7v-xDG" secondAttribute="bottom" constant="10" id="BJ4-FA-kpn"/>
+                            <constraint firstItem="bT4-JT-OWL" firstAttribute="bottom" secondItem="0Gr-xO-ycn" secondAttribute="bottom" constant="10" id="Lyg-xf-1Ju"/>
                             <constraint firstItem="HRZ-7v-xDG" firstAttribute="trailing" secondItem="bT4-JT-OWL" secondAttribute="trailing" id="RRV-H8-k3c"/>
-                            <constraint firstItem="bT4-JT-OWL" firstAttribute="trailing" secondItem="Rpr-K3-1lI" secondAttribute="trailing" constant="10" id="eHQ-UJ-Ja5"/>
+                            <constraint firstItem="0Gr-xO-ycn" firstAttribute="leading" secondItem="bT4-JT-OWL" secondAttribute="leading" constant="10" id="gry-zn-PYq"/>
                             <constraint firstItem="HRZ-7v-xDG" firstAttribute="leading" secondItem="bT4-JT-OWL" secondAttribute="leading" id="mUq-AK-ixy"/>
-                            <constraint firstItem="Rpr-K3-1lI" firstAttribute="top" secondItem="HRZ-7v-xDG" secondAttribute="bottom" constant="10" id="zra-r1-coN"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="textField" destination="Rpr-K3-1lI" id="XDf-79-4rE"/>
+                        <outlet property="textView" destination="0Gr-xO-ycn" id="t6Y-HI-MXq"/>
+                        <outlet property="textViewBottomConstraint" destination="Lyg-xf-1Ju" id="5IH-pw-wgf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XnG-uK-7bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -56,6 +59,9 @@
     </scenes>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

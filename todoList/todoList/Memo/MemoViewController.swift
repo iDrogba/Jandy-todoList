@@ -12,31 +12,39 @@ class MemoViewController : UIViewController {
     
     var HM : HomeModel?
     var currentMemoID = 0
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         HM = HomeModelManager.HomeModelShared.searchHomeModel(ID: currentMemoID)
-        textField.text = HM?.content
+        textView.text = HM?.content
         
-        // textfield 변경감지
-        self.textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        // 키보드 사용 감시
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    @objc func textFieldDidChange(_ sender: Any?) {
-        HomeModelManager.HomeModelShared.updateHomeModelContent(ID: currentMemoID, content: textField.text)
-      }
+  
     
     @IBAction func backwardButtonTapped(_ sender: Any) {
-        
+        HomeModelManager.HomeModelShared.updateHomeModelContent(ID: currentMemoID, content: textView.text)
         dismiss(animated: false, completion: nil)
     }
     
 }
 
 extension MemoViewController : UITextViewDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-          self.view.endEditing(true)
+  
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+      
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height + 10 - view.safeAreaInsets.bottom
+            textViewBottomConstraint.constant = adjustmentHeight
+        } else {
+            textViewBottomConstraint.constant = 10
+        }
     }
-    
 }
